@@ -1,7 +1,8 @@
-% PSD Experiment Controller (Transmitter)
+% PSD Experiment Controller
 % 
 %  Responsible for loading a data file, sending it over USB to the
-%  transmitter, and generating environmental noise.
+%  transmitter, generating environmental noise, reading data back from
+%  reciever, and saving it for post-processing.
 %
 % 16-722: Sensing & Sensors
 % HW 9: Phase Sensitive Detection Experiment
