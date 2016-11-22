@@ -39,12 +39,6 @@ set(sRcv,'BaudRate',115200);
 fopen(sRcv);
 
 % Handshake with transmitter
-fprintf(sTrans,'foo');
-while (~strcmp(fgetl(sTrans),'foo'))
-    fprintf(sTrans,'foo');
-end
-
-% Handshake with receiver
 fprintf(sRcv,'foo');
 while (~strcmp(fgetl(sRcv),'foo'))
     fprintf(sRcv,'foo');
@@ -56,6 +50,8 @@ soundsc(interference,8192);
 
 % Send out the data
 fwrite(sTrans,data,'uint8','async');
+
+% H
 
 % Begin reading data
 rec = fread(sRcv,length(rec),'uint8');

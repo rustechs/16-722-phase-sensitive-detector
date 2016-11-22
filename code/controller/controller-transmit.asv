@@ -1,4 +1,4 @@
-% PSD Experiment Controller (Transmitter)
+%% PSD Experiment Controller (Transmitter)
 % 
 %  Responsible for loading a data file, sending it over USB to the
 %  transmitter, and generating environmental noise.
@@ -38,18 +38,6 @@ sRcv = serial(portRcv);
 set(sRcv,'BaudRate',115200);
 fopen(sRcv);
 
-% Handshake with transmitter
-fprintf(sTrans,'foo');
-while (~strcmp(fgetl(sTrans),'foo'))
-    fprintf(sTrans,'foo');
-end
-
-% Handshake with receiver
-fprintf(sRcv,'foo');
-while (~strcmp(fgetl(sRcv),'foo'))
-    fprintf(sRcv,'foo');
-end
-
 % Generate and play interference sound
 interference = randn(1,length(data)+100);
 soundsc(interference,8192);
@@ -64,9 +52,8 @@ rec = fread(sRcv,length(rec),'uint8');
 save(['../../data/data ' datestr(now-1)],data,rec);
 
 % Close the serial ports
-fclose(sTrans);
-fclose(sRcv);
-delete(sTrans);
-delete(sRcv);
-clear sTrans
-clear sRcv
+fclose(sTrans)
+fclose(sRcv)
+delete(sTrans)
+delete(sRcv)
+clear sTrans, sRcv
